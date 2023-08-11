@@ -5,7 +5,16 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
+  theme: {      
+    screens: {
+      'lg': '1024px',
+      'xl': '1280px',
+      tabletAir: { max: "820px" }, // big tablet
+      tablet: { max: "768px" }, //tablet screen
+      surfDuo:{max:"540"},
+      sm: { max: "480px" },
+      xsm: { max: "380px" },
+      },
     extend: {
       colors: {
         /** primary */

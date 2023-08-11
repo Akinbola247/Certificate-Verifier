@@ -7,6 +7,7 @@ import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import { publicProvider } from "wagmi/providers/public";
 import { Alfajores, Celo} from "@celo/rainbowkit-celo/chains";
+import localFont from '@next/font/local';
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
 
@@ -37,7 +38,15 @@ const wagmiConfig = createConfig({
     publicClient: publicClient,
 });
 
-
+const satoshi = localFont({
+    src : [
+        {
+            path: '../public/Satoshi/Fonts/Variable/Satoshi-Variable.tff',
+            weight: '700'
+        }
+    ],
+    variable: '--font-satoshi-variable'
+})
 
 function App({ Component, pageProps }) {
     const typedData = {
@@ -61,7 +70,7 @@ function App({ Component, pageProps }) {
             name: 'Educational Certificate',
             version: '1',
             chainId: 44787,
-            verifyingContract: '0xd0EBe02e0206C16c10348f0c86dC0E4C4DF1ec2e',
+            verifyingContract: '0x68fE959ceDf999e581d1A45C33Ea4DE964daa11a',
         },
         message: {
             owner : '0x9B69F998b2a2b20FF54a575Bd5fB90A5D71656C1',
@@ -188,10 +197,15 @@ function App({ Component, pageProps }) {
                 appInfo={appInfo}
                 coolMode={true}
             >
+            <div  className={`${satoshi.variable} font-sans`}>
+            <div className='bg-[#0B031E]'>
                 <Layout>
-                    <Component {...pageProps} />
+                    <Component {...pageProps}/>
                     <button onClick={handleSign}>Sign Here</button>
                 </Layout>
+            </div>
+
+            </div>
             </RainbowKitProvider>
         </WagmiConfig>
     );
@@ -200,17 +214,3 @@ function App({ Component, pageProps }) {
 export default App;
 
 
-
-
-
-// const r = sig.r.toString('hex');
-// const s = sig.s.toString('hex');
-// const v = sig.v.toString(16);
-
-// // Ensure that 'r' and 's' are 32 bytes long
-// const paddedR = r.padStart(64, '0');
-// const paddedS = s.padStart(64, '0');
-
-// // Combine 'r', 's', and 'v' to get the 65-byte string
-// const signatureString = `0x${paddedR}${paddedS}${v}`;
-// console.log("Signature String:", signatureString);
