@@ -20,7 +20,7 @@ contract AccountFactory {
 
     event accountCreated(string _name, address _accountAddress, uint certID);
     constructor(address _nftAddress) {
-        owner == msg.sender;
+        owner = msg.sender;
         certificateIDs = 1;
         NftAddress = _nftAddress;
     }

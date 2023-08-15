@@ -7,10 +7,12 @@ module.exports = {
   ],
   theme: {      
     screens: {
-      'lg': '1024px',
-      'xl': '1280px',
+      
+      // 'lg': {'min': '1024px', 'max': '1279px'},
+      'xl': {'min': '1024px', 'max': '1535px'},
+      'xxl': {min: "1536px"},
       tabletAir: { max: "820px" }, // big tablet
-      tablet: { max: "768px" }, //tablet screen
+      // tablet: { max: "768px" }, //tablet screen
       surfDuo:{max:"540"},
       sm: { max: "480px" },
       xsm: { max: "380px" },
