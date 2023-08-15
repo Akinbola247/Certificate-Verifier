@@ -1,4 +1,4 @@
-import Title from './components/title';
+import Title from './components/Title';
 import InputTab from './components/InputTab';
 import world from '../assets/world.png';
 import Image from "next/image";
