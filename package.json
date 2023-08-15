@@ -8,6 +8,7 @@
     "scripts": {
         "react-app:dev": "yarn workspace @hack/react-app dev",
         "react-app:build": "yarn workspace @hack/react-app build",
+        "build-ui": "yarn workspace @hack/react-app build",
         "react-app:start": "yarn workspace @hack/react-app start",
         "react-app:lint": "yarn workspace @hack/react-app lint",
         "hardhat:test": "yarn workspace @hack/hardhat test",
