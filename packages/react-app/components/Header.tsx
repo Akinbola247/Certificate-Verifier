@@ -10,11 +10,15 @@ import { useState, useEffect } from "react";
 import { useContractRead, useAccount } from 'wagmi'
 import factoryabi from '../pages/utils/factory.json';
 import profile from '../assets/profile.png';
+import { useRouter } from 'next/router';
+import Loading from '../pages/components/Loading'
 
 
 export default function Header(prop : any) {
   const [isExist, setIsExist] = useState(false);
   const [popOpen, setPopOpen] = useState(false);
+  const router = useRouter();
+  const [isPageLoading, setIsLoading] = useState(router.isFallback);
 
   const {address} = useAccount()
   const { data: creationStatData, isError, isLoading, isFetched } = useContractRead({
@@ -33,8 +37,28 @@ export default function Header(prop : any) {
       //@ts-ignore
       setIsExist(creationStatData)
     }
+    const handleRouteChangeStart = () => {
+      setIsLoading(true);
+    };
+
+    const handleRouteChangeComplete = () => {
+      setIsLoading(false);
+    };
+
+    router.events.on('routeChangeStart', handleRouteChangeStart);
+    router.events.on('routeChangeComplete', handleRouteChangeComplete);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChangeStart);
+      router.events.off('routeChangeComplete', handleRouteChangeComplete);
+    };
+    
   }, [creationStatData, isFetched])
   
+  if (isPageLoading) {
+    return <Loading />
+  }
+
     return (
       <Disclosure as="nav" className="border-none mt-[20px]">
         {({ open }) => (

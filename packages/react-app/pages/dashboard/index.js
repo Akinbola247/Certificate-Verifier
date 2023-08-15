@@ -14,6 +14,7 @@ import TransferModal from '../components/TransferModal'
 import RevokeModal from '../components/RevokeModal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../components/Loading';
 
 
 
@@ -22,7 +23,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export const Dashboard = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen:isOpentwo, onOpen: onOpentwo, onClose:Onclosetwo } = useDisclosure()
-    
+    const [loadingState, setLoadingState] = useState(false);
     const [isSign, setIsSign] = useState(true);
     const [isMint, setIsMint] = useState(false);
     const [walletAddress, setWalletAddress] = useState('');
@@ -46,9 +47,10 @@ export const Dashboard = () => {
         args : [signature, walletAddress, 1722787680],
       })
       const { data, isLoading, isSuccess, write : callMint } = useContractWrite(MintConfig)
-
+  
       const handleMint = () =>{
         if(walletAddress != ''){
+            setLoadingState(true);
             callMint?.();
         }else{
             toast.error('Input Wallet Address')
@@ -96,7 +98,12 @@ export const Dashboard = () => {
         if(!address){
             window.location.href = '/';
         }
-      }, [childAddress, childContractData, childContractNonce, childContractID, address])
+        if(isSuccess){
+            toast.info('Mint successful')
+            setLoadingState(false)
+          }
+        
+      }, [childAddress, childContractData, childContractNonce, childContractID, address, isSuccess])
 
 
 
@@ -247,6 +254,7 @@ export const Dashboard = () => {
   return (<> 
  
     <Layout status={false} clicked={onOpen} secondClick={onOpentwo}>
+    {loadingState && <Loading />}
     <div>
             <div className='w-[1114px] h-[38px] rounded-[10px] bg-[#FFFEFF70] mx-auto flex justify-between px-[100px] py-[5px]'>
                         <div className='flex space-x-2'>
