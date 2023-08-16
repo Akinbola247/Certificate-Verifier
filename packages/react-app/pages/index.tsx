@@ -29,7 +29,7 @@ export default function Home() {
         <InputTab />
         </div>
           <div className='absolute top-[-40px] xxl:w-[1300px] xl:absolute  xxl:left-[15%] xxl:right-[15%] xl:right-10 xl:left-10 sm:hidden'>
-            <Image src={world} alt='world' className='xl:w-[1000px]' />
+            <Image src={world} alt='world' className='xl:w-[1000px] xxl:w-[1300px]' />
             </div>
          <Creataccount/>
          <Aboutsection />
