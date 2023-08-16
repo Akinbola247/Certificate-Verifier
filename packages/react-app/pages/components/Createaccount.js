@@ -10,11 +10,13 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../components/Loading';
 
 const Createaccount = (prop) => {
     const [institutionName, setinstitution] = useState('');
     const [duration,setDuration] = useState('');
     const [isExist, setIsExist] = useState(false);
+    const [loadingState, setLoadingState] = useState(false);
     
     const handleName = (e) => {
         setinstitution(e.target.value)
@@ -31,11 +33,7 @@ const Createaccount = (prop) => {
       args: [address],
     })
   
-    useEffect(() => {
-      if(isFetched){
-        setIsExist(creationStatData)
-      }
-    }, [creationStatData, isFetched])
+    
 
     const { config: creatAccountConfig } = usePrepareContractWrite({
         address: '0x504195e2a73A2Cd0f3c691e49ADC93E509cFdA79',
@@ -43,11 +41,12 @@ const Createaccount = (prop) => {
         functionName: 'CreateAccount',
         args : [institutionName, duration],
       })
-      const { data, isLoading, isSuccess, write : callCreate } = useContractWrite(creatAccountConfig)
+      const { data, isLoading, isError:createError, isSuccess, write : callCreate } = useContractWrite(creatAccountConfig)
 
       const handleCreateButton = () =>{
         if(creationStatData == false && address && institutionName != '' && duration != '' ){
-            callCreate();
+            setLoadingState(true);
+            callCreate?.();
         }
         if(!address){
             toast.info('Please Connect Wallet');
@@ -57,9 +56,23 @@ const Createaccount = (prop) => {
         }
       }
 
+      useEffect(() => {
+        if(isFetched){
+          setIsExist(creationStatData)
+        }
+        if(isSuccess){
+            toast.info('Account Created, proceed to dashboard')
+            setLoadingState(false)
+        }
+        if(createError){
+            toast.error('Account Creation failed')
+            setLoadingState(false)
+        }
+      }, [creationStatData, isFetched, isSuccess,createError])
 
   return (
     <div className='xxl:mt-[705px] xl:mt-[600px] sm:mt-[10px]'>
+     {loadingState && <Loading />}
            <div className="text-left">
                 <h1 id='createAccount' className="xxl:w-[366px] xl:w-[300] xxl:h-[66px] xxl:font-[900] xl:font-[800] sm:text-[30px] sm:font-[900] text-[48.62px] satoshi text-[#D129B8]">Create <span className="text-[#EEEEF0]">Account</span></h1>
                 <p className="font-[400] sm:w-[340px] sm:text-[20px] text-[24px] xxl:w-[690px] xl:w-[600px] mt-[10px] sm:mt-[5px] satoshi xxl:h-[108px] text-[#EEEEF0]">Seamlessly interact with cutting-edge blockchain technology to create an account, seamlessly manage certificate signing, and effortlessly verify credentials.</p>
