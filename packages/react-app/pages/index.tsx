@@ -19,7 +19,7 @@ export default function Home() {
       <div className='sm:hidden'>
         <Title />
       </div>
-      <div  className=" xxl:hidden sm:w-[400px] sm:mx-auto xl:hidden">
+      <div  className=" xxl:hidden sm:w-[400px] sm:text-center sm:mx-auto xl:hidden">
           <h1 className="sm:text-[30px] sm:font-[900] satoshi sm:w-[300px] text-[#EEEEF0]">Verify <span className='text-[#B21888]'>Certifications</span>  in seconds</h1>
           <p className="sm:w-[300px] sm:font-[400] satoshi text-[#EEEEF0]">Decentralized and secure solution for issuing verifiable certificates to learners and professionals.</p>
         </div>
@@ -28,7 +28,7 @@ export default function Home() {
         <div className='relative z-50'>
         <InputTab />
         </div>
-          <div className='absolute top-[-80px] xl:absolute xl:right-18 xl:left-10 sm:hidden'>
+          <div className='absolute top-[-80px] xl:absolute xxl:right-10  xxl:left-24 xl:right-10 xl:left-10 sm:hidden'>
             <Image src={world} alt='world' className='xl:w-[1000px]' />
             </div>
          <Creataccount/>

@@ -58,7 +58,15 @@ export default function Header(prop : any) {
   if (isPageLoading) {
     return <Loading />
   }
-
+  const handleownershipDialog = () =>{
+    prop.dialog();
+    setPopOpen(false);
+  }
+  const handlerevokeDialog = () =>{
+    prop.dialog2();
+    setPopOpen(false);
+  }
+  
     return (
       <Disclosure as="nav" className="border-none mt-[20px]">
         {({ open }) => (
@@ -104,8 +112,8 @@ export default function Header(prop : any) {
                 </div>
                 </div>
                {popOpen && <div className='w-[245px] h-[104px] bg-[#A9A9A970] rounded-[8px] border-[1px] mr-[150px] mt-[70px] text-center'> 
-                    <h1  className='w-[167px] my-[20px] h-[22px] satoshi font-[400] text-[16px] text-[#EEEEF06B] border-b-[2px] mx-auto cursor-pointer' onClick={prop.dialog} >Transfer Ownership</h1>             
-                    <h1  className='w-[167px] my-[20px] h-[22px] satoshi font-[400] text-[16px] text-[#EEEEF06B] border-b-[2px] mx-auto cursor-pointer' onClick={prop.dialog2}>Revoke Certificate</h1>             
+                    <h1  className='w-[167px] my-[20px] h-[22px] satoshi font-[400] text-[16px] text-[#EEEEF06B] border-b-[2px] mx-auto cursor-pointer' onClick={handleownershipDialog} >Transfer Ownership</h1>             
+                    <h1  className='w-[167px] my-[20px] h-[22px] satoshi font-[400] text-[16px] text-[#EEEEF06B] border-b-[2px] mx-auto cursor-pointer' onClick={handlerevokeDialog}>Revoke Certificate</h1>             
                 </div>}
               </div>
             </div>

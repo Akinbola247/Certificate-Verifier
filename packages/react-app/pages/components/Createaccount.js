@@ -59,7 +59,7 @@ const Createaccount = (prop) => {
 
 
   return (
-    <div className='xxl:mt-[720px] xl:mt-[600px] sm:mt-[10px]'>
+    <div className='xxl:mt-[705px] xl:mt-[600px] sm:mt-[10px]'>
            <div className="text-left">
                 <h1 id='createAccount' className="xxl:w-[366px] xl:w-[300] xxl:h-[66px] xxl:font-[900] xl:font-[800] sm:text-[30px] sm:font-[900] text-[48.62px] satoshi text-[#D129B8]">Create <span className="text-[#EEEEF0]">Account</span></h1>
                 <p className="font-[400] sm:w-[340px] sm:text-[20px] text-[24px] xxl:w-[690px] xl:w-[600px] mt-[10px] sm:mt-[5px] satoshi xxl:h-[108px] text-[#EEEEF0]">Seamlessly interact with cutting-edge blockchain technology to create an account, seamlessly manage certificate signing, and effortlessly verify credentials.</p>
