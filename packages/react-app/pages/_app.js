@@ -11,7 +11,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 
 
-const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID; // get one at https://cloud.walletconnect.com/app;
+const projectId = '2afb2469942b2b96b36433a184c88bb5'; // get one at https://cloud.walletconnect.com/app;
 
 
 const { chains, publicClient } = configureChains(
