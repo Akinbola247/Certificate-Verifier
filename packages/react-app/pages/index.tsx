@@ -28,7 +28,7 @@ export default function Home() {
         <div className='relative z-50'>
         <InputTab />
         </div>
-          <div className='absolute top-[-80px] xl:absolute xxl:right-10  xxl:left-24 xl:right-10 xl:left-10 sm:hidden'>
+          <div className='absolute top-[-80px] xxl:top-[-60px] xl:absolute  xxl:left-52 xl:right-10 xl:left-10 sm:hidden'>
             <Image src={world} alt='world' className='xl:w-[1000px]' />
             </div>
          <Creataccount/>
