@@ -28,7 +28,7 @@ export default function Home() {
         <div className='relative z-50'>
         <InputTab />
         </div>
-        <div className='absolute top-[-2%] left-[4%] w-full xl:w-[1100px] xl:left-10  right-20 sm:hidden'>
+        <div className='absolute top-[-2%] left-[4%] w-full right-20 sm:hidden'>
             <Image src={world} alt='world' className='w-full' />
           </div>
           <div className='sm:hidden absolute top-[10%]'>
