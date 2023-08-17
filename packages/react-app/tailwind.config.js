@@ -9,8 +9,8 @@ module.exports = {
     screens: {
       
       // 'lg': {'min': '1024px', 'max': '1279px'},
-      'xl': {'min': '1024px', 'max': '1535px'},
-      'xxl': {min: "1536px"},
+      'xl': {'min': '1024px', 'max': '1439px'},
+      'xxl': {min: "1440px"},
       tabletAir: { max: "820px" }, // big tablet
       // tablet: { max: "768px" }, //tablet screen
       surfDuo:{max:"540"},
